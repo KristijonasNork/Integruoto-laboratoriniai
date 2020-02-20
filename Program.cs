@@ -70,6 +70,16 @@ namespace ConsoleApp2
 
             Console.WriteLine("Egzaminas: " + egz);
             
+            int vid = 0;
+            for (int i = 0; i < n; i++)
+            {
+                vid += nd[i];
+            }
+            vid /= n;
+            double galutinis = 0.3 * vid + 0.7 * egz;
+
+            Console.WriteLine("Galutinis: " + galutinis);
+            
         }
     }
 }
