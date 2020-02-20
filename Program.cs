@@ -47,12 +47,28 @@ namespace ConsoleApp2
                 }
             }
 
+            int egz = 0;
+            while (egz == 0)
+            {
+                try
+                {
+                    egz = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.StackTrace);
+                    egz = 0;
+                }
+            }
+
             Console.WriteLine("V ir P: " + vardas + " " + pavarde);
 
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine("ND" + i + 1 + ": " + nd[i]);
+                Console.WriteLine("ND" + (i + 1) + ": " + nd[i]);
             }
+
+            Console.WriteLine("Egzaminas: " + egz);
             
         }
     }
