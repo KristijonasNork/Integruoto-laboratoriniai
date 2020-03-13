@@ -57,7 +57,9 @@ namespace ConsoleApp2
 		
 		public static void Main(string[] args)
 		{
+			Random rnd = new Random();
 			var studentai = new List<Studentas>();
+			int ndKiekis = 0;
 			string exit = "stay";
 			while (exit == "stay") {
 				Console.WriteLine("Įrašykite vardą: ");
@@ -66,47 +68,71 @@ namespace ConsoleApp2
 				string pavarde = Console.ReadLine();
 
 				var ndBalai = new List<double>();
-				int ndBalas = 0;
-				int ndKiekis = 0;
-				while (ndBalas != -1)
-				{
-					try
+				string auto = "Ne";
+				if (ndKiekis != 0) {
+					Console.WriteLine("Ar automatiskai generuoti namų darbus? Taip/Ne");
+					auto = Console.ReadLine();
+				}
+				int n = 0;
+				if (ndKiekis == 0 || auto == "Ne") {
+					int ndBalas = 0;
+					while (ndBalas != -1)
 					{
-						Console.WriteLine("Jeigu visi nd įvertinimai parašyti, rašykite '-1'");
-						Console.WriteLine("Įrašykite "+(++ndKiekis)+"-ojo namų darbo įvertinimą: ");
-						ndBalas = Convert.ToInt32(Console.ReadLine());
-					}
-					catch (Exception e)
-					{
-						Console.WriteLine(e.StackTrace);
-						ndBalas = 0;
-					}
-					if (ndBalas > 0 && ndBalas < 11)
-					{
-						ndBalai.Add(ndBalas);
-						Console.WriteLine("Pridėtas.");
-					}
-					else if (ndBalas != -1)
-					{
-						ndKiekis--;
-						Console.WriteLine("Klaidingas skaičius.");
+						try
+						{
+							Console.WriteLine("Jeigu visi nd įvertinimai parašyti, rašykite '-1'");
+							Console.WriteLine("Įrašykite "+(++n)+"-ojo namų darbo įvertinimą: ");
+							ndBalas = Convert.ToInt32(Console.ReadLine());
+						}
+						catch (Exception e)
+						{
+							Console.WriteLine(e.StackTrace);
+							ndBalas = 0;
+						}
+						if (ndBalas > 0 && ndBalas < 11)
+						{
+							ndBalai.Add(ndBalas);
+							Console.WriteLine("Pridėtas.");
+						}
+						else if (ndBalas != -1)
+						{
+							n--;
+							Console.WriteLine("Klaidingas skaičius.");
+						}
 					}
 				}
+				else {
+					for (int i = 0; i < ndKiekis; i++) {
+						int balas = rnd.Next(1, 11);
+						Console.WriteLine("Sugeneruotas skaičius: " + balas + " " + (i+1) +"-ojo namų darbo");
+						ndBalai.Add(balas);
+					}
+				}
+				
+				if (ndKiekis == 0)
+					ndKiekis = n;
 
+				Console.WriteLine("Ar generuoti automatiškai egzamino įvertinimą? Taip/Ne");
 				int egz = 0;
-				while (egz == 0)
-				{
-					try
+				if (Console.ReadLine() == "Ne") {
+					while (egz == 0)
 					{
-						Console.WriteLine("Įrašykite egzamino įvertinimą: ");
-						egz = Convert.ToInt32(Console.ReadLine());
+						try
+						{
+							Console.WriteLine("Įrašykite egzamino įvertinimą: ");
+							egz = Convert.ToInt32(Console.ReadLine());
+						}
+						catch (Exception e)
+						{
+							Console.WriteLine(e.StackTrace);
+							egz = 0;
+							Console.WriteLine("Klaidingas skaičius.");
+						}
 					}
-					catch (Exception e)
-					{
-						Console.WriteLine(e.StackTrace);
-						egz = 0;
-						Console.WriteLine("Klaidingas skaičius.");
-					}
+				}
+				else {
+					egz = rnd.Next(1, 11);
+					Console.WriteLine("Sugeneruotas skaičius: " + egz);
 				}
 				studentai.Add(new Studentas(vardas, pavarde, ndBalai.ToArray(), egz));
 				Console.WriteLine("Pridėtas naujas studentas į sąrašą");
