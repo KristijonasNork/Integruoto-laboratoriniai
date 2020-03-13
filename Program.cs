@@ -40,9 +40,9 @@ namespace ConsoleApp2
 			
 			public double GetGalutinis(bool isVid) {
 				if (isVid)
-					return 0.3 * vid + 0.7 * egz;
+					return Math.Round(0.3 * vid + 0.7 * egz, 2);
 				else
-					return 0.3 * med + 0.7 * egz;
+					return Math.Round(0.3 * med + 0.7 * egz, 2);
 			}
 			
 			public string GetVardas() {
@@ -73,7 +73,7 @@ namespace ConsoleApp2
 					try
 					{
 						Console.WriteLine("Jeigu visi nd įvertinimai parašyti, rašykite '-1'");
-						Console.WriteLine("Įrašykite "+(ndKiekis++)+"-ojo namų darbo įvertinimą: ");
+						Console.WriteLine("Įrašykite "+(++ndKiekis)+"-ojo namų darbo įvertinimą: ");
 						ndBalas = Convert.ToInt32(Console.ReadLine());
 					}
 					catch (Exception e)
