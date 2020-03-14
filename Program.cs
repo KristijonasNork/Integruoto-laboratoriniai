@@ -57,27 +57,43 @@ namespace ConsoleApp2
 		
 		public class Metodai
 		{
+			public void CreateFile() {
+				var duomenys = new List<string>{
+					"Vardas Pavardė ND1 ND2 ND3 ND4 ND5 Egzaminas",
+					"Vardas1 Pavardė1 8 9 10 6 10 9",
+					"Vardas2 Pavardė2 7 10 8 5 4 6"};
+				using (System.IO.StreamWriter file = 
+					   new System.IO.StreamWriter(@"kursiokai.txt"))
+				{
+					foreach (string line in duomenys)
+						file.WriteLine(line);
+				}
+			}
+			
 			public List<Studentas> ReadFromFile() {
 				var studentai = new List<Studentas>();
 				string line, vardas = "", pavarde = "";
 				var ndBalai = new List<double>();
 				int egz = 0;
-				System.IO.StreamReader file = new System.IO.StreamReader(@"kursiokai.txt");
-				line = file.ReadLine();
-				while((line = file.ReadLine()) != null)  
+				using (System.IO.StreamReader file = 
+					   new System.IO.StreamReader(@"kursiokai.txt"))
 				{
-					string[] duomenys = line.Split(' ');
-					for (int i = 0; i < duomenys.Length; i++) {
-						if (i == 0)
-							vardas = duomenys[i];
-						else if (i == 1)
-							pavarde = duomenys[i];
-						else if (i == (duomenys.Length - 1))
-							egz = Convert.ToInt32(duomenys[i]);
-						else
-							ndBalai.Add(Convert.ToDouble(duomenys[i]));
-					}
-					studentai.Add(new Studentas(vardas, pavarde, ndBalai.ToArray(), egz));
+					line = file.ReadLine();
+					while((line = file.ReadLine()) != null)  
+					{
+						string[] duomenys = line.Split(' ');
+						for (int i = 0; i < duomenys.Length; i++) {
+							if (i == 0)
+								vardas = duomenys[i];
+							else if (i == 1)
+								pavarde = duomenys[i];
+							else if (i == (duomenys.Length - 1))
+								egz = Convert.ToInt32(duomenys[i]);
+							else
+								ndBalai.Add(Convert.ToDouble(duomenys[i]));
+						}
+						studentai.Add(new Studentas(vardas, pavarde, ndBalai.ToArray(), egz));
+				}
 				}
 				return studentai;
 			}
@@ -87,18 +103,19 @@ namespace ConsoleApp2
 		{
 			Random rnd = new Random();
 			Metodai metodai = new Metodai();
+			metodai.CreateFile();
 			var studentai = new List<Studentas>();
 			string menu = "stay";
-			while (menu != "TERMINATE") {
+			while (menu -= "TERMINATE") {
 				
 				Console.WriteLine("Pasirinkite funkcija:\n"
-								+ "1. Irašyti ranka"
-								+ "2. Nuskaityti iš failo"
+								+ "1. Irašyti ranka\n"
+								+ "2. Nuskaityti iš failo\n"
 								+ "3. Rodyti lentelę");
 				string selected = "0";
 				while (selected == "0") {
 					selected = Console.ReadLine();
-					if (selected != "1" || selected != "2" || selected != "3")
+					if (selected != "1" && selected != "2" && selected != "3")
 						Console.WriteLine("Rašykite 1, 2 arba 3");
 				}
 				if (selected == "1") {
@@ -203,7 +220,7 @@ namespace ConsoleApp2
 						Console.WriteLine(String.Format("{0,-10} {1,-10} {2}", "Vardas", "Pavardė", "Galutinis (Med.)"));
 						Console.WriteLine("--------------------------------------");
 						foreach (var studentas in studentai)
-							Console.WriteLine(String.Format("{0,-10} {1,-10} {2,16}", studentas.GetVardas(), studentas.GetPavarde(), studentas.GetGalutinis(true)));
+							Console.WriteLine(String.Format("{0,-10} {1,-10} {2,16}", studentas.GetVardas(), studentas.GetPavarde(), studentas.GetGalutinis(false)));
 					}
 				}
 			}
