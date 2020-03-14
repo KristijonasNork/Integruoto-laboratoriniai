@@ -60,8 +60,8 @@ namespace ConsoleApp2
 			public void CreateFile() {
 				var duomenys = new List<string>{
 					"Vardas Pavardė ND1 ND2 ND3 ND4 ND5 Egzaminas",
-					"Vardas1 Pavardė1 8 9 10 6 10 9",
-					"Vardas2 Pavardė2 7 10 8 5 4 6"};
+					"Rimas Kurtinaitis 8 9 10 6 10 9",
+					"Arvydas Sabonis 7 10 8 5 4 6"};
 				using (System.IO.StreamWriter file = 
 					   new System.IO.StreamWriter(@"kursiokai.txt"))
 				{
@@ -208,10 +208,11 @@ namespace ConsoleApp2
 					Console.WriteLine("Pridėti studentai");
 				}
 				else if (selected == "3") {
-					Console.WriteLine(String.Format("{0,-10} {1,-10} {2} {3}", "Vardas", "Pavardė", "Galutinis (Vid.)", "Galutinis (Med.)"));
-					Console.WriteLine("-------------------------------------------------------");
+					Console.WriteLine(String.Format("{0,-10} {1,-12} {2} {3}", "Vardas", "Pavardė", "Galutinis (Vid.)", "Galutinis (Med.)"));
+					Console.WriteLine("---------------------------------------------------------");
+					studentai.Sort((x, y) => x.GetVardas().CompareTo(y.GetVardas()));
 					foreach (var studentas in studentai)
-						Console.WriteLine(String.Format("{0,-10} {1,-10} {2,16} {3,16}", studentas.GetVardas(), studentas.GetPavarde(), studentas.GetGalutinis(true), studentas.GetGalutinis(false)));
+						Console.WriteLine(String.Format("{0,-10} {1,-12} {2,16} {3,16}", studentas.GetVardas(), studentas.GetPavarde(), studentas.GetGalutinis(true), studentas.GetGalutinis(false)));
 				}
 			}
 		}
