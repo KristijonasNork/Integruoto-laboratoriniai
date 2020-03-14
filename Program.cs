@@ -106,7 +106,7 @@ namespace ConsoleApp2
 			metodai.CreateFile();
 			var studentai = new List<Studentas>();
 			string menu = "stay";
-			while (menu -= "TERMINATE") {
+			while (menu != "TERMINATE") {
 				
 				Console.WriteLine("Pasirinkite funkcija:\n"
 								+ "1. Irašyti ranka\n"
@@ -208,20 +208,10 @@ namespace ConsoleApp2
 					Console.WriteLine("Pridėti studentai");
 				}
 				else if (selected == "3") {
-					Console.WriteLine("Parašykite Vid jeigu norite Vidurkių arba kitką jeigu Medianą");
-					if (Console.ReadLine() == "Vid") {
-
-						Console.WriteLine(String.Format("{0,-10} {1,-10} {2}", "Vardas", "Pavardė", "Galutinis (Vid.)"));
-						Console.WriteLine("--------------------------------------");
-						foreach (var studentas in studentai)
-							Console.WriteLine(String.Format("{0,-10} {1,-10} {2,16}", studentas.GetVardas(), studentas.GetPavarde(), studentas.GetGalutinis(true)));
-					}
-					else {
-						Console.WriteLine(String.Format("{0,-10} {1,-10} {2}", "Vardas", "Pavardė", "Galutinis (Med.)"));
-						Console.WriteLine("--------------------------------------");
-						foreach (var studentas in studentai)
-							Console.WriteLine(String.Format("{0,-10} {1,-10} {2,16}", studentas.GetVardas(), studentas.GetPavarde(), studentas.GetGalutinis(false)));
-					}
+					Console.WriteLine(String.Format("{0,-10} {1,-10} {2} {3}", "Vardas", "Pavardė", "Galutinis (Vid.)", "Galutinis (Med.)"));
+					Console.WriteLine("-------------------------------------------------------");
+					foreach (var studentas in studentai)
+						Console.WriteLine(String.Format("{0,-10} {1,-10} {2,16} {3,16}", studentas.GetVardas(), studentas.GetPavarde(), studentas.GetGalutinis(true), studentas.GetGalutinis(false)));
 				}
 			}
 		}
