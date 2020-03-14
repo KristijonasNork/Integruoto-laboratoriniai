@@ -1,6 +1,7 @@
 # Integruoto-laboratoriniai
 Integruoto-laboratoriniai
 
-1. Galimybė sukurti Studentas objektą pagal kintamuosius Vardas, Pavardė, Namų darbų balai, Egzamino balas.
-2. Galimybė automatizuoti balų sukurimą.
-3. Galimybė pasirinkti tarp Medianos ir Vidurkio apskaičiavimo.
+1. Galimybė sukurti Studentas objektą pagal kintamuosius Vardas, Pavardė, Namų darbų balai, Egzamino balas įrašant ranka arba automatizuotai po pirmo sukurto ranka studento.
+2. Galimybė nuskaityti iš failo ir išsaugoti į studentų List naujus studentus.
+3. Galimybė pasirinkti iš menių kurią funckiją atlikti
+4. Lentelėje surūšiuota pagal Vardą stulepli ir rodomas Vidurkis bei Mediana.
