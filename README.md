@@ -5,4 +5,4 @@ Integruoto-laboratoriniai
 2. Galimybė nuskaityti iš failo ir išsaugoti į studentų List naujus studentus.
 3. Galimybė pasirinkti iš menių kurią funckiją atlikti
 4. Lentelėje surūšiuota pagal Vardą stulepli ir rodomas Vidurkis bei Mediana.
-5. Galimybė sukurti 5 failus su 10 iki 100000 įrašų ir juos išrūšiuoti į du failus.
+5. Galimybė sukurti 5 failus su 10 iki 100000 įrašų ir juos išrūšiuoti į du failus bei rodoma kiek laiko užtrūko programa.
