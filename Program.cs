@@ -16,12 +16,13 @@ namespace ConsoleApp2
 				Console.WriteLine("Pasirinkite funkcija:\n"
 								+ "1. Irašyti ranka\n"
 								+ "2. Nuskaityti iš failo\n"
-								+ "3. Rodyti lentelę");
+								+ "3. Rodyti lentelę\n"
+								+ "4. Sugeneruoti penkis atsitiktinius studentų sąrašų failus");
 				string selected = "0";
 				while (selected == "0") {
 					selected = Console.ReadLine();
-					if (selected != "1" && selected != "2" && selected != "3")
-						Console.WriteLine("Rašykite 1, 2 arba 3");
+					if (selected != "1" && selected != "2" && selected != "3" && selected != "4")
+						Console.WriteLine("Rašykite 1, 2, 3 arba 4");
 				}
 				if (selected == "1") {
 					int ndKiekis = 0;
@@ -118,6 +119,9 @@ namespace ConsoleApp2
 					studentai.Sort((x, y) => x.GetVardas().CompareTo(y.GetVardas()));
 					foreach (var studentas in studentai)
 						Console.WriteLine(String.Format("{0,-10} {1,-12} {2,16} {3,16}", studentas.GetVardas(), studentas.GetPavarde(), studentas.GetGalutinis(true), studentas.GetGalutinis(false)));
+				}
+				else if (selected == "4") {
+					metodai.GenerateFiles();
 				}
 			}
 		}
