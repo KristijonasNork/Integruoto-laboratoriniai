@@ -1,6 +1,6 @@
 namespace ConsoleApp2
 {
-    public class Studentas
+		public class Studentas
 		{
 			private string vardas, pavarde;
 			private double[] ndBalai;
@@ -47,6 +47,14 @@ namespace ConsoleApp2
 			
 			public string GetPavarde() {
 				return pavarde;
+			}
+			
+			public override string ToString() {
+				string balai = "";
+				for (int i = 0; i < ndSize; i++) {
+					balai += (ndBalai[i] + " ");
+				}
+				return vardas + " " + pavarde + " " + balai + "" + egz;
 			}
 			
 		}
