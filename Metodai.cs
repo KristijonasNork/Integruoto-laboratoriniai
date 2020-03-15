@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Diagnostics;
+
 namespace ConsoleApp2
 {
 	public class Metodai
