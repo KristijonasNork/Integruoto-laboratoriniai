@@ -16,6 +16,9 @@ namespace ConsoleApp2
 			}
 		
 			public void GenerateFiles() {
+				Stopwatch laikmatis = new Stopwatch();
+				laikmatis.Start();
+				bool isCrashed = false;
 				Random rnd = new Random();
 				try
 				{
@@ -50,6 +53,18 @@ namespace ConsoleApp2
 				catch (Exception e)
 				{
 					Console.WriteLine(e.Message);
+					isCrashed = true;
+				}
+				finally
+				{
+					laikmatis.Stop();
+					TimeSpan ts = laikmatis.Elapsed;
+					if (isCrashed)
+						Console.WriteLine("Programa netinkamai suveikė, negalima pateikti tikslaus testavimo");
+					else
+						Console.WriteLine("RuneTime " + 
+							String.Format("{0:00}s {1:00}ms", 
+							ts.Seconds, ts.Milliseconds / 10));
 				}
 			}
 			
