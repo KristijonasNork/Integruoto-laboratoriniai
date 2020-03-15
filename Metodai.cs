@@ -1,6 +1,6 @@
 namespace ConsoleApp2
 {
-    public class Metodai
+	public class Metodai
 		{
 			public void CreateFile() {
 				var duomenys = new List<string>{
@@ -20,25 +20,50 @@ namespace ConsoleApp2
 				string line, vardas = "", pavarde = "";
 				var ndBalai = new List<double>();
 				int egz = 0;
-				using (System.IO.StreamReader file = 
-					   new System.IO.StreamReader(@"kursiokai.txt"))
-				{
-					line = file.ReadLine();
-					while((line = file.ReadLine()) != null)  
+				try {
+					using (System.IO.StreamReader file = 
+						   new System.IO.StreamReader(@"kursiokai.txt"))
 					{
-						string[] duomenys = line.Split(' ');
-						for (int i = 0; i < duomenys.Length; i++) {
-							if (i == 0)
-								vardas = duomenys[i];
-							else if (i == 1)
-								pavarde = duomenys[i];
-							else if (i == (duomenys.Length - 1))
-								egz = Convert.ToInt32(duomenys[i]);
-							else
-								ndBalai.Add(Convert.ToDouble(duomenys[i]));
+						line = file.ReadLine();
+						while((line = file.ReadLine()) != null)  
+						{
+							string[] duomenys = line.Split(' ');
+							for (int i = 0; i < duomenys.Length; i++) {
+								if (i == 0)
+									vardas = duomenys[i];
+								else if (i == 1)
+									pavarde = duomenys[i];
+								else if (i == (duomenys.Length - 1)) {
+									try {
+										egz = Convert.ToInt32(duomenys[i]);
+									}
+									catch (Exception e)
+									{
+										Console.WriteLine(e.StackTrace);
+										Console.WriteLine("Nepavyko konvertuoti '" + duomenys[i] + "' į Int. Nustatomas egzamino balas į 1");
+										egz = 1;
+									}
+								}
+								else {
+									try {
+										ndBalai.Add(Convert.ToDouble(duomenys[i]));
+									}
+									catch (Exception e)
+									{
+										Console.WriteLine(e.StackTrace);
+										Console.WriteLine("Nepavyko konvertuoti '" + duomenys[i] + "' į Double. Pridedamas namų darbo balas 1");
+										ndBalai.Add(1);
+									}
+								}
+							}
+							studentai.Add(new Studentas(vardas, pavarde, ndBalai.ToArray(), egz));
 						}
-						studentai.Add(new Studentas(vardas, pavarde, ndBalai.ToArray(), egz));
+					}
 				}
+				catch (IOException e)
+				{
+					Console.WriteLine(e.ToString());
+					Console.WriteLine("Įvyko klaida su failu!");
 				}
 				return studentai;
 			}
