@@ -14,6 +14,28 @@ namespace ConsoleApp2
 						file.WriteLine(line);
 				}
 			}
+		
+			public void GenerateFiles() {
+				Random rnd = new Random();
+				for (int i = 1; i < 6; i++) {
+					using (System.IO.StreamWriter file =
+						   new System.IO.StreamWriter(@"kursiokai"+i+".txt"))
+					{
+						file.WriteLine("Vardas Pavardė ND1 ND2 ND3 ND4 ND5 Egzaminas");
+						for (int j = 1; j <= Math.Pow(10,i); j++) {
+							string vardas = "Vardas"+j.ToString();
+							string pavarde = "Pavarde"+j;
+							int egz = rnd.Next(1,11);
+							double[] ndBalai = new double[5];
+							for (int k = 0; k < 5; k++)
+								ndBalai[k] = rnd.Next(1,11);
+							Studentas studentas = new Studentas(vardas, pavarde, ndBalai, egz);
+							file.WriteLine(studentas);
+						}
+						Console.WriteLine("Sukurtas failas " + "kursiokai" + i + ".txt su " + Math.Pow(10,i) + " įrašų");
+					}
+				}
+			}
 			
 			public List<Studentas> ReadFromFile() {
 				var studentai = new List<Studentas>();
