@@ -73,11 +73,11 @@ namespace ConsoleApp2
 				}
 			}
 			
-			public LinkedList<Studentas> ReadFromFile() {
+			public Queue<Studentas> ReadFromFile() {
 				Stopwatch laikmatis = new Stopwatch();
 				laikmatis.Start();
 				Console.WriteLine("Pradedamas skaiciavimas");
-				var studentai = new LinkedList<Studentas>();
+				var studentai = new Queue<Studentas>();
 				string line, vardas = "", pavarde = "";
 				var ndBalai = new List<double>();
 				int egz = 0;
@@ -117,7 +117,7 @@ namespace ConsoleApp2
 									}
 								}
 							}
-							studentai.AddLast(new Studentas(vardas, pavarde, ndBalai.ToArray(), egz));
+							studentai.Enqueue(new Studentas(vardas, pavarde, ndBalai.ToArray(), egz));
 						}
 					}
 				}
@@ -135,6 +135,5 @@ namespace ConsoleApp2
 				
 				return studentai;
 			}
-		}
 		}
 }
