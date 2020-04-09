@@ -74,13 +74,16 @@ namespace ConsoleApp2
 			}
 			
 			public List<Studentas> ReadFromFile() {
+				Stopwatch laikmatis = new Stopwatch();
+				laikmatis.Start();
+				Console.WriteLine("Pradedamas skaiciavimas");
 				var studentai = new List<Studentas>();
 				string line, vardas = "", pavarde = "";
 				var ndBalai = new List<double>();
 				int egz = 0;
 				try {
 					using (System.IO.StreamReader file = 
-						   new System.IO.StreamReader(@"kursiokai.txt"))
+						   new System.IO.StreamReader(@"kursiokai4.txt"))
 					{
 						line = file.ReadLine();
 						while((line = file.ReadLine()) != null)  
@@ -123,6 +126,13 @@ namespace ConsoleApp2
 					Console.WriteLine(e.ToString());
 					Console.WriteLine("Įvyko klaida su failu!");
 				}
+				
+				laikmatis.Stop();
+				TimeSpan ts = laikmatis.Elapsed;
+				Console.WriteLine("RunTime " + 
+						String.Format("{0:00}s {1:00}ms", 
+						ts.Seconds, ts.Milliseconds / 10));
+				
 				return studentai;
 			}
 		}
