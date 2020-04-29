@@ -231,6 +231,31 @@ namespace ConsoleApp2
 					Console.WriteLine("Po sort Memory usage: " + currentProcess.WorkingSet64.ToString() + "(" + (currentProcess.WorkingSet64 - memory) + ")");
 					
 				}
+				else if (method == 4) {
+					currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					memory = currentProcess.WorkingSet64;
+					Console.WriteLine("Prieš sort Memory usage: " + memory);
+					var vargsaiList = new List<Studentas>();
+					
+					Stopwatch laikmatis = new Stopwatch();
+					laikmatis.Start();
+					Console.WriteLine("Pradedamas skaiciavimas List rūšiavimas į Vargšus ir Kietekus");
+					
+					foreach (Studentas s in studentai) {
+						if (s.GetGalutinis(true) < 5)
+							vargsaiList.Add(s);
+					}
+					
+					studentai.RemoveAll(s => vargsaiList.Contains(s));
+					
+					laikmatis.Stop();
+					TimeSpan ts = laikmatis.Elapsed;
+					Console.WriteLine("RunTime " + 
+							String.Format("{0:00}s {1:00}ms", 
+							ts.Seconds, ts.Milliseconds / 10));
+					currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					Console.WriteLine("Po sort Memory usage: " + currentProcess.WorkingSet64.ToString() + "(" + (currentProcess.WorkingSet64 - memory) + ")");
+				}
 			}
 		}
 }
