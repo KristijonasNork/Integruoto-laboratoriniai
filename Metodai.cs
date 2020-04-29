@@ -19,7 +19,7 @@ namespace ConsoleApp2
 						file.WriteLine(line);
 				}
 			}
-		
+			
 			public void GenerateFiles() {
 				Stopwatch laikmatis = new Stopwatch();
 				laikmatis.Start();
@@ -73,11 +73,13 @@ namespace ConsoleApp2
 				}
 			}
 			
-			public Queue<Studentas> ReadFromFile() {
+			public List<Studentas> ReadFromFile() {
+				/*
 				Stopwatch laikmatis = new Stopwatch();
 				laikmatis.Start();
 				Console.WriteLine("Pradedamas skaiciavimas");
-				var studentai = new Queue<Studentas>();
+				*/
+				var studentai = new List<Studentas>();
 				string line, vardas = "", pavarde = "";
 				var ndBalai = new List<double>();
 				int egz = 0;
@@ -117,7 +119,7 @@ namespace ConsoleApp2
 									}
 								}
 							}
-							studentai.Enqueue(new Studentas(vardas, pavarde, ndBalai.ToArray(), egz));
+							studentai.Add(new Studentas(vardas, pavarde, ndBalai.ToArray(), egz));
 						}
 					}
 				}
@@ -126,14 +128,69 @@ namespace ConsoleApp2
 					Console.WriteLine(e.ToString());
 					Console.WriteLine("Įvyko klaida su failu!");
 				}
-				
+				/*
 				laikmatis.Stop();
 				TimeSpan ts = laikmatis.Elapsed;
 				Console.WriteLine("RunTime " + 
 						String.Format("{0:00}s {1:00}ms", 
 						ts.Seconds, ts.Milliseconds / 10));
+				*/
 				
 				return studentai;
+			}
+			
+			public void DivideStudents(int method, List<Studentas> studentai) {
+				if (method == 1) {
+					Process currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					Console.WriteLine("Prieš sort Memory usage: " + currentProcess.WorkingSet64.ToString());
+					var vargsaiList = new List<Studentas>();
+					var kietekaiList = new List<Studentas>();
+					
+					Stopwatch laikmatis = new Stopwatch();
+					laikmatis.Start();
+					Console.WriteLine("Pradedamas skaiciavimas List rūšiavimas į Vargšus ir Kietekus");
+					
+					foreach (Studentas s in studentai) {
+						if (s.GetGalutinis(true) < 5)
+							vargsaiList.Add(s);
+						else
+							kietekaiList.Add(s);
+					}
+					
+					laikmatis.Stop();
+					TimeSpan ts = laikmatis.Elapsed;
+					Console.WriteLine("RunTime " + 
+							String.Format("{0:00}s {1:00}ms", 
+							ts.Seconds, ts.Milliseconds / 10));
+					currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					Console.WriteLine("Po sort Memory usage: " + currentProcess.WorkingSet64.ToString());
+				}
+				else if (method == 2) {
+					var studentaiLinked = new LinkedList<Studentas>();
+					foreach (Studentas s in studentai) {
+						studentaiLinked.AddFirst(s);
+					}
+					
+					Stopwatch laikmatis = new Stopwatch();
+					laikmatis.Start();
+					Console.WriteLine("Pradedamas skaiciavimas LinkedList rūšiavimas į Vargšus ir Kietekus");
+					
+					//if ()
+					
+					laikmatis.Stop();
+					TimeSpan ts = laikmatis.Elapsed;
+					Console.WriteLine("RunTime " + 
+							String.Format("{0:00}s {1:00}ms", 
+							ts.Seconds, ts.Milliseconds / 10));
+					
+				}
+				else if (method == 3) {
+					var studentaiQueue = new Queue<Studentas>();
+					foreach (Studentas s in studentai) {
+						studentaiQueue.Enqueue(s);
+					}
+					
+				}
 			}
 		}
 }
