@@ -153,6 +153,10 @@ namespace ConsoleApp2
 					Console.WriteLine("------------ Pradedamas antrasis testas su LinkedList ------------");
 					metodai.DivideStudents(5, studentaiList);
 					Console.WriteLine("------------ Baigtas antrasis testas su LinkedList ------------");
+
+					Console.WriteLine("------------ Pradedamas antrasis testas su Queue ------------");
+					metodai.DivideStudents(6, studentaiList);
+					Console.WriteLine("------------ Baigtas antrasis testas su Queue ------------");
 				}
 			}
 		}
