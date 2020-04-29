@@ -217,9 +217,9 @@ namespace ConsoleApp2
 					// Kadangi studentaiQueue negali būti praloopinamas neištrinant jame esančių elementų paverčiamas į array, kad saugoti abiejuose konteineriuose
 					foreach (Studentas s in studentaiQueue.ToArray()) {
 						if (s.GetGalutinis(true) < 5)
-							studentaiQueue.Enqueue(s);
+							vargsaiQueue.Enqueue(s);
 						else
-							studentaiQueue.Enqueue(s);
+							kietekaiQueue.Enqueue(s);
 					}
 					
 					laikmatis.Stop();
