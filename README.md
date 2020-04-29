@@ -1,5 +1,35 @@
 # Integruoto-laboratoriniai
-Integruoto-laboratoriniai
+
+v0.1 Release:
+* Galimybė sukurti Studentas objektą pagal kintamuosius Vardas, Pavardė, Namų darbų balai, Egzamino balas.
+* Galimybė automatizuoti balų sukurimą.
+* Galimybė pasirinkti tarp Medianos ir Vidurkio apskaičiavimo.
+
+v0.2 Release:
+* Galimybė sukurti Studentas objektą pagal kintamuosius Vardas, Pavardė, Namų darbų balai, Egzamino balas įrašant ranka arba automatizuotai po pirmo sukurto ranka studento.
+* Galimybė nuskaityti iš failo ir išsaugoti į studentų List naujus studentus.
+* Galimybė pasirinkti iš menių kurią funckiją atlikti
+* Lentelėje surūšiuota pagal Vardą stulepli ir rodomas Vidurkis bei Mediana.
+
+v0.3 Release:
+
+* Atskirtos klasės nuo pagrindinės Program klasės.
+* Pridėti keli try ir catch blokai, kad pagauti klaidas ir jas apibūdinti
+
+v0.4 Release:
+
+* Galimybė sukurti Studentas objektą pagal kintamuosius Vardas, Pavardė, Namų darbų balai, Egzamino balas įrašant ranka arba automatizuotai po pirmo sukurto ranka studento.
+* Galimybė nuskaityti iš failo ir išsaugoti į studentų List naujus studentus.
+* Galimybė pasirinkti iš menių kurią funckiją atlikti
+* Lentelėje surūšiuota pagal Vardą stulepli ir rodomas Vidurkis bei Mediana.
+* Galimybė sukurti 5 failus su 10 iki 100000 įrašų ir juos išrūšiuoti į du failus bei rodoma kiek laiko užtrūko programa.
+
+v0.5 Release:
+
+* Padaryti kodo efektyvumo testavimai pakeičiant List tipą į LinkedList ir Queue.
+* Didelio skirtumo nebuvo, tad efektyvumas neatrastas.
+* Laikmačio testai aprašyti ReadMe.md faile.
+
 
 v1.0 pridėti testavimai Studentų rūšiavimui į du konteinerius pagal vidurkį, šio testo rezultatai:
 
@@ -60,7 +90,7 @@ Po sort Memory usage: 3983298560(274432)
 Naudojant pirmąją strategija, puikiai matosi kiek daugiau naudoja Memory, skliausteliuose aprašyta kiek padidėjo memory po sort.
 Naudojant antrąją strategiją, sumažėja memory sąnaudos bet viename iš testų pasirodė padidėjęs sortinimo laikas 26ms prie List.
 
-
+Integruoto-laboratoriniai:
 1. Galimybė sukurti Studentas objektą pagal kintamuosius Vardas, Pavardė, Namų darbų balai, Egzamino balas įrašant ranka arba automatizuotai po pirmo sukurto ranka studento.
 2. Galimybė nuskaityti iš failo ir išsaugoti į studentų List naujus studentus.
 3. Galimybė pasirinkti iš menių kurią funckiją atlikti
