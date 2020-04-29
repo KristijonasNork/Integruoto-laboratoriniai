@@ -133,8 +133,14 @@ namespace ConsoleApp2
 					Console.WriteLine("Gaunami studentai");
 					var studentaiList = metodai.ReadFromFile();
 					Console.WriteLine("Gauti studentai, saugomi List tipo kintamajame");
+					
+					Console.WriteLine("------------ Pradedamas pirmasis testas su List ------------");
 					metodai.DivideStudents(1, studentaiList);
-					//metodai.DivideStudents(2);
+					Console.WriteLine("------------ Baigtas pirmasis testas su List ------------");
+					
+					Console.WriteLine("------------ Pradedamas pirmasis testas su LinkedList ------------");
+					metodai.DivideStudents(2, studentaiList);
+					Console.WriteLine("------------ Baigtas pirmasis testas su LinkedList ------------");
 					//metodai.DivideStudents(3);
 				}
 			}
