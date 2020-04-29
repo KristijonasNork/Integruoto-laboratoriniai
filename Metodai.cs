@@ -200,10 +200,35 @@ namespace ConsoleApp2
 					
 				}
 				else if (method == 3) {
+					currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					memory = currentProcess.WorkingSet64;
+					Console.WriteLine("Prieš sort Memory usage: " + memory);
 					var studentaiQueue = new Queue<Studentas>();
 					foreach (Studentas s in studentai) {
 						studentaiQueue.Enqueue(s);
 					}
+					var vargsaiQueue = new Queue<Studentas>();
+					var kietekaiQueue = new Queue<Studentas>();
+					
+					Stopwatch laikmatis = new Stopwatch();
+					laikmatis.Start();
+					Console.WriteLine("Pradedamas skaiciavimas Queue rūšiavimas į Vargšus ir Kietekus");
+					
+					// Kadangi studentaiQueue negali būti praloopinamas neištrinant jame esančių elementų paverčiamas į array, kad saugoti abiejuose konteineriuose
+					foreach (Studentas s in studentaiQueue.ToArray()) {
+						if (s.GetGalutinis(true) < 5)
+							studentaiQueue.Enqueue(s);
+						else
+							studentaiQueue.Enqueue(s);
+					}
+					
+					laikmatis.Stop();
+					TimeSpan ts = laikmatis.Elapsed;
+					Console.WriteLine("RunTime " + 
+							String.Format("{0:00}s {1:00}ms", 
+							ts.Seconds, ts.Milliseconds / 10));
+					currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					Console.WriteLine("Po sort Memory usage: " + currentProcess.WorkingSet64.ToString() + "(" + (currentProcess.WorkingSet64 - memory) + ")");
 					
 				}
 			}
