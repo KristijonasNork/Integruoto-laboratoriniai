@@ -145,6 +145,10 @@ namespace ConsoleApp2
 					Console.WriteLine("------------ Pradedamas pirmasis testas su Queue ------------");
 					metodai.DivideStudents(3, studentaiList);
 					Console.WriteLine("------------ Baigtas pirmasis testas su Queue ------------");
+					
+					Console.WriteLine("------------ Pradedamas antrasis testas su List ------------");
+					metodai.DivideStudents(4, studentaiList);
+					Console.WriteLine("------------ Baigtas antrasis testas su List ------------");
 				}
 			}
 		}
