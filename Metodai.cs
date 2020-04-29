@@ -140,9 +140,12 @@ namespace ConsoleApp2
 			}
 			
 			public void DivideStudents(int method, List<Studentas> studentai) {
+				Process currentProcess = null;
+				long memory = 0;
 				if (method == 1) {
-					Process currentProcess = System.Diagnostics.Process.GetCurrentProcess();
-					Console.WriteLine("Prieš sort Memory usage: " + currentProcess.WorkingSet64.ToString());
+					currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					memory = currentProcess.WorkingSet64;
+					Console.WriteLine("Prieš sort Memory usage: " + memory);
 					var vargsaiList = new List<Studentas>();
 					var kietekaiList = new List<Studentas>();
 					
@@ -163,25 +166,37 @@ namespace ConsoleApp2
 							String.Format("{0:00}s {1:00}ms", 
 							ts.Seconds, ts.Milliseconds / 10));
 					currentProcess = System.Diagnostics.Process.GetCurrentProcess();
-					Console.WriteLine("Po sort Memory usage: " + currentProcess.WorkingSet64.ToString());
+					Console.WriteLine("Po sort Memory usage: " + currentProcess.WorkingSet64.ToString() + "(" + (currentProcess.WorkingSet64 - memory) + ")");
 				}
 				else if (method == 2) {
+					currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					memory = currentProcess.WorkingSet64;
+					Console.WriteLine("Prieš sort Memory usage: " + memory);
 					var studentaiLinked = new LinkedList<Studentas>();
 					foreach (Studentas s in studentai) {
 						studentaiLinked.AddFirst(s);
 					}
+					var vargsaiLinked = new LinkedList<Studentas>();
+					var kietekaiLinked = new LinkedList<Studentas>();
 					
 					Stopwatch laikmatis = new Stopwatch();
 					laikmatis.Start();
 					Console.WriteLine("Pradedamas skaiciavimas LinkedList rūšiavimas į Vargšus ir Kietekus");
 					
-					//if ()
+					foreach (Studentas s in studentaiLinked) {
+						if (s.GetGalutinis(true) < 5)
+							vargsaiLinked.AddFirst(s);
+						else
+							kietekaiLinked.AddFirst(s);
+					}
 					
 					laikmatis.Stop();
 					TimeSpan ts = laikmatis.Elapsed;
 					Console.WriteLine("RunTime " + 
 							String.Format("{0:00}s {1:00}ms", 
 							ts.Seconds, ts.Milliseconds / 10));
+					currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					Console.WriteLine("Po sort Memory usage: " + currentProcess.WorkingSet64.ToString() + "(" + (currentProcess.WorkingSet64 - memory) + ")");
 					
 				}
 				else if (method == 3) {
