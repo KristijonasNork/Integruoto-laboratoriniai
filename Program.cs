@@ -17,12 +17,13 @@ namespace ConsoleApp2
 								+ "1. Irašyti ranka\n"
 								+ "2. Nuskaityti iš failo\n"
 								+ "3. Rodyti lentelę\n"
-								+ "4. Sugeneruoti penkis atsitiktinius studentų sąrašų failus");
+								+ "4. Sugeneruoti penkis atsitiktinius studentų sąrašų failus\n"
+								+ "5. Dalinti studentus iš failo į dvi kategorijas");
 				string selected = "0";
 				while (selected == "0") {
 					selected = Console.ReadLine();
-					if (selected != "1" && selected != "2" && selected != "3" && selected != "4")
-						Console.WriteLine("Rašykite 1, 2, 3 arba 4");
+					if (selected != "1" && selected != "2" && selected != "3" && selected != "4" && selected != "5")
+						Console.WriteLine("Rašykite 1, 2, 3, 4 arba 5");
 				}
 				if (selected == "1") {
 					int ndKiekis = 0;
@@ -122,6 +123,16 @@ namespace ConsoleApp2
 				}
 				else if (selected == "4") {
 					metodai.GenerateFiles();
+				}
+				else if (selected == "5") {
+					Process currentProcess = System.Diagnostics.Process.GetCurrentProcess();
+					Console.WriteLine("Prieš studentų gavimą memory usage: " + currentProcess.WorkingSet64.ToString());
+					Console.WriteLine("Gaunami studentai");
+					var studentaiList = metodai.ReadFromFile();
+					Console.WriteLine("Gauti studentai, saugomi List tipo kintamajame");
+					metodai.DivideStudents(1, studentaiList);
+					//metodai.DivideStudents(2);
+					//metodai.DivideStudents(3);
 				}
 			}
 		}
