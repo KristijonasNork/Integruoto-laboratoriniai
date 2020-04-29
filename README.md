@@ -1,6 +1,54 @@
 # Integruoto-laboratoriniai
 Integruoto-laboratoriniai
 
+v1.0 pridėti testavimai Studentų rūšiavimui į du konteinerius pagal vidurkį, šio testo rezultatai:
+
+------------ Pradedamas pirmasis testas su List ------------
+Pries sort Memory usage: 3980877824
+Pradedamas skaiciavimas List rusiavimas i Vargsus ir Kietekus
+RunTime 00s 00ms
+Po sort Memory usage: 3981172736(294912)
+------------ Baigtas pirmasis testas su List ------------
+
+------------ Pradedamas pirmasis testas su LinkedList ------------
+Pries sort Memory usage: 3981172736
+Pradedamas skaiciavimas LinkedList rusiavimas i Vargsus ir Kietekus
+RunTime 00s 00ms
+Po sort Memory usage: 3982168064(995328)
+------------ Baigtas pirmasis testas su LinkedList ------------
+
+------------ Pradedamas pirmasis testas su Queue ------------
+Pries sort Memory usage: 3982176256
+Pradedamas skaiciavimas Queue rusiavimas i Vargsus ir Kietekus
+RunTime 00s 00ms
+Po sort Memory usage: 3982594048(417792)
+------------ Baigtas pirmasis testas su Queue ------------
+
+------------ Pradedamas antrasis testas su List ------------
+Pries sort Memory usage: 3982602240
+Pradedamas skaiciavimas List rusiavimas i Vargsus ir Kietekus
+RunTime 00s 26ms
+Po sort Memory usage: 3982721024(118784)
+------------ Baigtas antrasis testas su List ------------
+
+------------ Pradedamas antrasis testas su LinkedList ------------
+Pries sort Memory usage: 3982729216
+Pradedamas skaiciavimas LinkedList rusiavimas i Vargsus ir Kietekus
+RunTime 00s 00ms
+Po sort Memory usage: 3983024128(294912)
+------------ Baigtas antrasis testas su LinkedList ------------
+
+------------ Pradedamas antrasis testas su Queue ------------
+Pries sort Memory usage: 3983024128
+Pradedamas skaiciavimas Queue rusiavimas i Vargsus ir Kietekus
+RunTime 00s 00ms
+Po sort Memory usage: 3983298560(274432)
+------------ Baigtas antrasis testas su Queue ------------
+
+Naudojant pirmąją strategija, puikiai matosi kiek daugiau naudoja Memory, skliausteliuose aprašyta kiek padidėjo memory po sort.
+Naudojant antrąją strategiją, sumažėja memory sąnaudos bet viename iš testų pasirodė padidėjęs sortinimo laikas 26ms prie List.
+
+
 1. Galimybė sukurti Studentas objektą pagal kintamuosius Vardas, Pavardė, Namų darbų balai, Egzamino balas įrašant ranka arba automatizuotai po pirmo sukurto ranka studento.
 2. Galimybė nuskaityti iš failo ir išsaugoti į studentų List naujus studentus.
 3. Galimybė pasirinkti iš menių kurią funckiją atlikti
