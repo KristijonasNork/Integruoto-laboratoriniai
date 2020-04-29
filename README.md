@@ -1,5 +1,30 @@
 # Integruoto-laboratoriniai
 
+Naudojimo instrukcijos:
+- Norint sukurti studentą:
+  1. Parašome '1' ir spaudžiame Enter
+  2. Įrašome vardą ir spaudžiame Enter
+  3. Įrašome pavardę ir spaudžiame Enter
+  4. Įrašome pirmojo namų darbo įvertinimą ir spaudžiame Enter
+  5. Pasirinktinai: Jeigu reikia daugiau namų darbų, kartoti nuo 4 žingsnio, toliau keliauti į 6 žingsnį.
+  6. Įrašyti '-1', kad baigti namų darbų įvertinimų įrašymą ir spaudžiame Enter
+  7. Jūsų nuožiūrą pasirinkti ar generuoti egzamino įvertinimus ar ranka. Taip/Ne
+  8. Jeigu pasirinkote Ne: įrašykite skaičių ir spaudžiame Enter ir einame į žingsnį 10.
+  9. Jeigu pasirinkote Taip: eikite į žingsnį 10.
+  10. Jūsų nuožiūra pasirinkti ar sukurti dar vieną studentą. Taip/Ne
+  11. Jeigu pasirinkote Taip: eikite į žingsnį 2.
+  12. Jeigu pasirinkote Ne: grįžote į pradinį meniu.
+- Norint nuskaityti iš failo:
+  1. Parašome '2' ir spaudžiame Enter.
+  2. Jeigu jūsų paleistoje aplinkoje yra failas 'kursiokai4.txt' bus sėkmingai išsaugoti Studentai sąraše.
+  3. Jeigu jūsų paleistoje aplinkoje nėra failo 'kursiokai4.txt' bus rodoma klaida ir ši funkcija neveiks.
+- Norint pamatyti studentų lentelę:
+  1. Parašome '3' ir spaudžiame Enter.
+- Norint sugeneruoti atsitiktinius studentų sąrašų failus:
+  1. Parašome '4' ir spaudžiame Enter
+- Norint pamėginti skirtingų konteinerių dviejų strategijų testus rūšiuojant studentus iš 'kursiokai4.txt' failo:
+  1. Parašome '5' ir spaudžiame Enter
+
 v0.1 Release:
 * Galimybė sukurti Studentas objektą pagal kintamuosius Vardas, Pavardė, Namų darbų balai, Egzamino balas.
 * Galimybė automatizuoti balų sukurimą.
